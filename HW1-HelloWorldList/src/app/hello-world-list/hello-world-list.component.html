@@ -1,0 +1,24 @@
+<table class="list">
+  <!-- 
+      *ngFor="let phrase of PhraseList"
+      ngFor - директива для повторения HTML элементов 
+      let phrase of PhraseList - создание переменной phase в которую на каждой итерации будет устанавливаться значение из массива PhraseList
+
+      (click)="onSelect(phrase)"
+      (click) - определение события, на которое необходимо установить обработчик.
+      onSelect(phrase) - обработчик события, который сработает при событии onclick элемента li
+  -->
+  <tr *ngFor="let phrase of PhraseList" 
+      (click)="onSelect(phrase)">
+      <td>
+      {{phrase.value}}
+      </td>
+</tr>
+</table>
+
+<!--*ngIf="selectedPhraseLanguage" если выражение хранит значение true элемент будет добавлен в DOM-->
+<div *ngIf="selectedPhraseLanguage">
+  Selected Language : {{selectedPhraseLanguage}}
+</div>
+
+
