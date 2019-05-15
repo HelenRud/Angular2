@@ -1,0 +1,60 @@
+
+    <table class="list">
+
+  
+  <tr *ngFor="let product of ProductsList" [style.color]="getTrColor(product.price)">
+     <td>
+      {{product.id}}
+      </td>
+      <td>
+        {{product.name}}
+      </td>
+      <td>
+        {{product.price}}
+      </td>
+      <td>
+        {{product.category}} 
+      </td>
+</tr>
+</table>
+
+<select [(ngModel)]="choice" >
+    <option disabled>Choise the category:</option>
+    <option value="Category 1">Category 1</option> 
+    <option value="Category 2">Category 2</option> 
+    <option value="Category 3">Category 3</option> 
+</select> 
+<button (click)="choiseRes()">Display choise</button>
+
+<table class="list">
+    <tr *ngFor="let product of ProductsRes" [style.color]="getTrColor(product.price)">
+       <td>
+        {{product.id}}
+        </td>
+        <td>
+          {{product.name}}
+        </td>
+        <td>
+          {{product.price}}
+        </td>
+        <td>
+          {{product.category}} 
+        </td>
+
+  </tr>
+  </table>
+
+<label for="id-input">ID</label>
+<input type="text" id="id-input" [(ngModel)]="idValue" />
+
+<label for="name-input">Name</label>
+<input type="text" id="name-input" [(ngModel)]="nameValue" />
+
+<label for="price-input">Price</label>
+<input type="text" id="price-input" [(ngModel)]="priceValue" />
+  
+<label for="category-input">Category</label>
+<input type="text" id="category-input" [(ngModel)]="categoryValue" />
+
+<button (click)="addInput()">Add</button>
+
