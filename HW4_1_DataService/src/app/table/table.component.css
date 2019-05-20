@@ -1,0 +1,11 @@
+:host {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    line-height: 2em;
+    margin: 5px;
+    padding: 5px;
+}

@@ -1,0 +1,75 @@
+<table class="table table-striped m-5 w-50 text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of ProductsList" [style.color]="getTrColor(product.price)">
+      <td>
+        {{product.id}}
+      </td>
+      <td>
+        {{product.name}}
+      </td>
+      <td>
+        {{product.price}}
+      </td>
+      <td>
+        {{product.category}}
+      </td>
+      <td>
+        <button class='btn btn-primary' (click)="delItem(product)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<select [(ngModel)]="choice">
+  <option disabled>Choise the category:</option>
+  <option value="Category 1">Category 1</option>
+  <option value="Category 2">Category 2</option>
+  <option value="Category 3">Category 3</option>
+</select>
+<button (click)="choiseRes()">Display choise</button>
+
+<table class="list">
+  <tr *ngFor="let product of ProductsRes" [style.color]="getTrColor(product.price)">
+    <td>
+      {{product.id}}
+    </td>
+    <td>
+      {{product.name}}
+    </td>
+    <td>
+      {{product.price}}
+    </td>
+    <td>
+      {{product.category}}
+    </td>
+
+  </tr>
+</table>
+
+<form class="needs-validation m-5" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="name-input">Name</label>
+      <input type="text" class="form-control" placeholder="Product name" id="name-input" name="productName" required
+        [(ngModel)]="nameValue" />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="price-input">Price</label>
+      <input type="text" class="form-control" placeholder="Price" id="price-input" name="price" required [(ngModel)]="priceValue" />
+</div>
+<div class="col-md-4 mb-3">
+      <label for="category-input">Category</label>
+      <input type="text" class="form-control" placeholder="Category" id="category-input" name="category" required [(ngModel)]="categoryValue" />
+</div>
+</div>
+      <button class="btn btn-primary" type="submit" (click)="addInput()">Add</button>
+</form>
