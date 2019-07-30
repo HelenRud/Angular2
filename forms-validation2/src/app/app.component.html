@@ -1,0 +1,78 @@
+<!-- <div class="container">
+  <form (ngSubmit)='submit(myForm)' #myForm='ngForm'>
+    <div class="col-8">
+      <div ngModelGroup='user' #user='ngModelGroup'>
+        <div class='form-group' >
+            <label>Email</label>
+            <input type="text" class="form-control" ngModel name='email' required email #email='ngModel' [ngClass]="{'has-error': email.invalid && email.touched}">
+            <p *ngIf='email.invalid && email.touched'>Error!</p>
+            <button type='button' class='btn btn-primary' (click)='addRandEmail()'>Add random email</button>
+        </div>
+        <div  class='form-group'>
+            <label>Password</label>
+            <input type="text" class="form-control" ngModel name='password' required #password='ngModel' [ngClass]="{'has-error': password.pristine && password.touched}">
+            <p *ngIf='password.pristine && password.touched'>Password is required!</p>
+        </div>
+      </div>
+      <p *ngIf='user.invalid && user.touched'>Some error!</p>
+      
+        <div>
+            <label>Country</label>
+            <select class="form-control" [ngModel]='defCountry' name='country'>
+              <option value="ru">Russia</option>
+              <option value="ua">Ukraina</option>
+              <option value="by">Belarusia</option>
+            </select>
+        </div>
+        <div class='radio' *ngFor='let answ of answers'>
+          <label>
+          <input type="radio" [value]='answ.type' ngModel [ngModel]='defAnsw' name='answer'>
+          {{answ.text}}</label>
+        </div>
+        <button type="submit"  class='btn btn-success' [disabled]='!myForm.valid'>Submit</button>
+    </div>
+  </form>
+  <div *ngIf='submitFlag'><pre> {{existForm|json}}</pre></div>
+</div> -->
+
+<hr>
+
+<div class="container">
+  <form (ngSubmit)='submitR()' [formGroup]='reactForm'>
+    <div class="col-8">
+      <div formGroupName='user'>
+        <div class='form-group'>
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName='emailR'
+            [ngClass]="{'has-error': reactForm.get('user.emailR').invalid && reactForm.get('user.emailR').touched}">
+          <p *ngIf='reactForm.get("user.emailR").invalid && reactForm.get("user.emailR").touched'>Error in email!</p>
+        </div>
+        <div class='form-group'>
+          <label>Password</label>
+          <input type="text" class="form-control" formControlName='passwordR'
+            [ngClass]="{'has-error': reactForm.get('user.passwordR').invalid && reactForm.get('user.passwordR').touched}">
+          <p *ngIf='reactForm.get("user.passwordR").invalid && reactForm.get("user.passwordR").touched'>Error in password!</p>
+        </div>
+      </div>
+      <p *ngIf='reactForm.get("user").touched && reactForm.get("user").invalid'>Some error!</p>
+      <div>
+        <label>Country</label>
+        <select class="form-control" name='country' formControlName='countryR'>
+          <option value="ru">USA</option>
+          <option value="ua">Ukraina</option>
+          <option value="by">Belarusia</option>
+        </select>
+      </div>
+      <div class='radio' *ngFor='let answ of answers'>
+        <label>
+          <input type="radio" name='answerR' formControlName='answerR' [value]='answ.type'>
+          {{answ.text}}
+        </label>
+      </div>
+      <button type="submit" class='btn btn-success' [disabled]='!reactForm.valid'>Submit</button>
+    </div>
+  </form>
+</div>
+
+
+<router-outlet></router-outlet>
